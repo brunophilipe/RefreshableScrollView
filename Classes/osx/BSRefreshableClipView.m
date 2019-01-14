@@ -36,11 +36,7 @@
         [self setBackgroundColor:[clipView backgroundColor]];
         [self setTranslatesAutoresizingMaskIntoConstraints:[clipView translatesAutoresizingMaskIntoConstraints]];
         [self setCopiesOnScroll:[clipView copiesOnScroll]];
-        
-        // 10.9 only
-        if ([clipView respondsToSelector:@selector(canDrawSubviewsIntoLayer)] && [self respondsToSelector:@selector(setCanDrawSubviewsIntoLayer:)]) {
-            [self setCanDrawSubviewsIntoLayer:[clipView canDrawSubviewsIntoLayer]];
-        }
+        [self setCanDrawSubviewsIntoLayer:[clipView canDrawSubviewsIntoLayer]];
     }
     return self;
 }

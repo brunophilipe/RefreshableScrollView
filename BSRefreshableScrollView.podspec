@@ -21,9 +21,9 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/adib/RefreshableScrollView.git", :tag => 'release-' + s.version.to_s }
   s.social_media_url = 'https://www.facebook.com/cutecoder'
 
-  # s.platform     = :osx, '10.8'
+  # s.platform     = :osx, '10.9'
   # s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.8'
+  s.osx.deployment_target = '10.9'
   s.requires_arc = true
 
   s.source_files = 'Classes/osx/*'

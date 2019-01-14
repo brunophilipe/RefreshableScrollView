@@ -38,14 +38,14 @@ typedef NS_OPTIONS(NSUInteger, BSRefreshableScrollViewSide) {
 	 */
 	BSRefreshableScrollViewSideBottom = 1 << 1,
 	// left & right edges are for future expansion but not currently implemented
-	/**
-	 Currently unimplemented.
-	 */
-	BSRefreshableScrollViewSideLeft = 1 << 2,
-	/**
-	 Currently unimplemented.
-	 */
-	BSRefreshableScrollViewSideRight = 1 << 3
+//	/**
+//	 Currently unimplemented.
+//	 */
+//	BSRefreshableScrollViewSideLeft = 1 << 2,
+//	/**
+//	 Currently unimplemented.
+//	 */
+//	BSRefreshableScrollViewSideRight = 1 << 3
 };
 
 // ---

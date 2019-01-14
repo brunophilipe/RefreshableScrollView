@@ -24,28 +24,29 @@
 /**
  Indicates which sides that are refreshable. 
 */
-enum {
-    BSRefreshableScrollViewSideNone = 0,
-    /**
-    Pulling downwards will reveal a refresh indicator and when sufficiently pulled should trigger a data load for newer items.
-    */
-    BSRefreshableScrollViewSideTop = 1,
-    /**
-    Pulling upwards will reveal a refresh indicator and when sufficiently pulled should trigger a data load for older items.
-    */
-    BSRefreshableScrollViewSideBottom = 1 << 1,
-    // left & right edges are for future expansion but not currently implemented
-    /**
-    Currently unimplemented.
-    */
-    BSRefreshableScrollViewSideLeft = 1 << 2,
-    /**
-    Currently unimplemented.
-    */
-    BSRefreshableScrollViewSideRight = 1 << 3
+typedef NS_OPTIONS(NSUInteger, BSRefreshableScrollViewSide) {
+	/**
+	 No sides are refreshable. This is the default value.
+	 */
+	BSRefreshableScrollViewSideNone = 0,
+	/**
+	 Pulling downwards will reveal a refresh indicator and when sufficiently pulled should trigger a data load for newer items.
+	 */
+	BSRefreshableScrollViewSideTop = 1,
+	/**
+	 Pulling upwards will reveal a refresh indicator and when sufficiently pulled should trigger a data load for older items.
+	 */
+	BSRefreshableScrollViewSideBottom = 1 << 1,
+	// left & right edges are for future expansion but not currently implemented
+	/**
+	 Currently unimplemented.
+	 */
+	BSRefreshableScrollViewSideLeft = 1 << 2,
+	/**
+	 Currently unimplemented.
+	 */
+	BSRefreshableScrollViewSideRight = 1 << 3
 };
-
-typedef NSUInteger BSRefreshableScrollViewSide;
 
 // ---
 
@@ -63,12 +64,12 @@ typedef NSUInteger BSRefreshableScrollViewSide;
 /**
 Which sides are refreshable, of type BSRefreshableScrollViewSide
 */
-@property (nonatomic) NSUInteger refreshableSides;
+@property (nonatomic) BSRefreshableScrollViewSide refreshableSides;
 
 /**
 Which sides are currently refreshing, of type BSRefreshableScrollViewSide
 */
-@property (nonatomic,readonly) NSUInteger refreshingSides;
+@property (nonatomic,readonly) BSRefreshableScrollViewSide refreshingSides;
 
 /**
  The object that will provide the refreshable data.
@@ -79,7 +80,7 @@ Which sides are currently refreshing, of type BSRefreshableScrollViewSide
 /**
  Call this when you have loaded the data to dismiss the refresh progress indicator.
 */
-- (void)stopRefreshingSide:(BSRefreshableScrollViewSide) refreshableSide;
+- (void)stopRefreshingSide:(BSRefreshableScrollViewSide)refreshableSide;
 
 
 @end

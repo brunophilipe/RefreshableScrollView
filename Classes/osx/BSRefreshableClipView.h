@@ -23,3 +23,4 @@
 @interface BSRefreshableClipView : NSClipView
 
 @end
+

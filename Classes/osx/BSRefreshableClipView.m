@@ -33,13 +33,13 @@
     return [(BSRefreshableScrollView*) self.superview headerView];
 }
 
--(NSView*) footerView
+- (NSView *)footerView
 {
     return [(BSRefreshableScrollView*) self.superview footerView];
 }
 
 
--(BSRefreshableScrollViewSide) refreshingSides
+- (BSRefreshableScrollViewSide)refreshingSides
 {
     return [(BSRefreshableScrollView*) self.superview refreshingSides];
 }
@@ -61,9 +61,9 @@
         constrained.y = MAX(-headerFrame.size.height, proposedNewOrigin.y);
     }
     
-    if((refreshingSides & BSRefreshableScrollViewSideBottom) ) {
+    if ((refreshingSides & BSRefreshableScrollViewSideBottom)) {
         const NSRect footerFrame = [self footerView].frame;
-        if (proposedNewOrigin.y >  documentFrame.size.height - clipViewBounds.size.height) {
+        if (proposedNewOrigin.y > documentFrame.size.height - clipViewBounds.size.height) {
             const CGFloat maxHeight = documentFrame.size.height - clipViewBounds.size.height + footerFrame.size.height + 1;
             constrained.y = MIN(maxHeight, proposedNewOrigin.y);
         }
@@ -73,7 +73,7 @@
 }
 
 
--(NSRect)documentRect
+- (NSRect)documentRect
 {
     NSRect documentRect = [super documentRect];
     const BSRefreshableScrollViewSide refreshingSides = [self refreshingSides];
@@ -83,7 +83,7 @@
         documentRect.origin.y -= headerFrame.size.height;
     }
     
-    if(refreshingSides & BSRefreshableScrollViewSideBottom) {
+    if (refreshingSides & BSRefreshableScrollViewSideBottom) {
         const NSRect footerFrame = [self footerView].frame;
         documentRect.size.height += footerFrame.size.height ;
     }
@@ -94,7 +94,7 @@
 
 #pragma mark NSView
 
--(BOOL)isFlipped
+- (BOOL)isFlipped
 {
     return YES;
 }

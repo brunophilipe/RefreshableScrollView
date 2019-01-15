@@ -35,7 +35,7 @@
 {
     NSClipView* const clipView = self.contentView;
     const NSRect clipViewBounds = clipView.bounds;
-	CGFloat contentViewMaxY = NSMaxY(self.contentView.bounds);
+	CGFloat contentViewMaxY = NSMinY(self.contentView.bounds);
 
 	__auto_type stopRefresh = ^(BSRefreshableScrollViewSide side, NSProgressIndicator* progressIndicator, BOOL (^shouldScroll)(void)) {
         if (!(self.refreshingSides & side)) {
@@ -71,12 +71,12 @@
 
     if (refreshableSides & BSRefreshableScrollViewSideBottom) {
         stopRefresh(BSRefreshableScrollViewSideBottom,self.bottomProgressIndicator,^{
-            return (BOOL) (clipViewBounds.origin.y > contentViewMaxY);
+            return (BOOL) (clipViewBounds.origin.y >= contentViewMaxY);
         });
     }
 }
 
-- (NSView *)newEdgeViewForSide:(BSRefreshableScrollViewSide) edgeSide progressIndicator:(NSProgressIndicator *)indicatorView
+- (NSView *)newEdgeViewForSide:(BSRefreshableScrollViewSide)edgeSide progressIndicator:(NSProgressIndicator *)indicatorView
 {
     NSView* const contentView = self.contentView;
     NSView* const documentView = self.documentView;
@@ -125,7 +125,8 @@
 {
     const NSEventPhase eventPhase = theEvent.phase;
     
-    if (eventPhase & NSEventPhaseChanged) {
+    if (eventPhase & NSEventPhaseChanged)
+	{
         NSClipView* const clipView = self.contentView;
         const NSRect clipViewBounds = clipView.bounds;
         NSView* const documentView = self.documentView;
@@ -220,7 +221,7 @@
         if (clipViewBounds.origin.y < 0) {
             // showing top area
             completeScrollPhase(BSRefreshableScrollViewSideTop,self.topProgressIndicator);
-        } else if (clipViewBounds.origin.y > 0) {
+        } else if (clipViewBounds.origin.y >= NSMinY(self.contentView.bounds)) {
             // showing bottom area
             completeScrollPhase(BSRefreshableScrollViewSideBottom,self.bottomProgressIndicator);
         }

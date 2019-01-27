@@ -31,7 +31,7 @@
 
 @synthesize refreshingSides = _refreshingSides;
 
-- (void)stopRefreshingSide:(BSRefreshableScrollViewSide)refreshableSides
+- (void)stopRefreshingSide:(BSRefreshableScrollViewSide)refreshableSides animated:(BOOL)animated
 {
     NSClipView* const clipView = self.contentView;
     const NSRect clipViewBounds = clipView.bounds;
@@ -46,7 +46,7 @@
         [progressIndicator stopAnimation:self];
         [progressIndicator setDisplayedWhenStopped:NO];
 
-		if (shouldScroll()) {
+		if (shouldScroll() && animated) {
             // fake scrolling
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 int scrollAmount = 0;

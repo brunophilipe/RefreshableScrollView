@@ -80,7 +80,7 @@ Which sides are currently refreshing, of type BSRefreshableScrollViewSide
 /**
  Call this when you have loaded the data to dismiss the refresh progress indicator.
 */
-- (void)stopRefreshingSide:(BSRefreshableScrollViewSide)refreshableSide;
+- (void)stopRefreshingSide:(BSRefreshableScrollViewSide)refreshableSides animated:(BOOL)animated;
 
 
 @end
